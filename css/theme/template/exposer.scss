@@ -1,0 +1,27 @@
+// Exposes theme's variables for easy re-use in CSS for plugin authors
+
+:root {
+  @include css-var(--background-color, $backgroundColor);
+  @include css-var(--main-font, $mainFont);
+  @include css-var(--main-font-size, $mainFontSize);
+  @include css-var(--main-color, $mainColor);
+  @include css-var(--block-margin, $blockMargin);
+  @include css-var(--heading-margin, $headingMargin);
+  @include css-var(--heading-font, $headingFont);
+  @include css-var(--heading-color, $headingColor);
+  @include css-var(--heading-line-height, $headingLineHeight);
+  @include css-var(--heading-letter-spacing, $headingLetterSpacing);
+  @include css-var(--heading-text-transform, $headingTextTransform);
+  @include css-var(--heading-text-shadow, $headingTextShadow);
+  @include css-var(--heading-font-weight, $headingFontWeight);
+  @include css-var(--heading1-text-shadow, $heading1TextShadow);
+  @include css-var(--heading1-size, $heading1Size);
+  @include css-var(--heading2-size, $heading2Size);
+  @include css-var(--heading3-size, $heading3Size);
+  @include css-var(--heading4-size, $heading4Size);
+  @include css-var(--code-font, $codeFont);
+  @include css-var(--link-color, $linkColor);
+  @include css-var(--link-color-hover, $linkColorHover);
+  @include css-var(--selection-background-color, $selectionBackgroundColor);
+  @include css-var(--selection-color, $selectionColor);
+}
