@@ -447,7 +447,8 @@
 	 */
 	function checkCapabilities() {
 
-		isMobileDevice = /(iphone|ipod|ipad|android)/gi.test( UA );
+		isMobileDevice = /(iphone|ipod|ipad|android)/gi.test( UA ) ||
+							( navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1 ); // iPadOS
 		isChrome = /chrome/i.test( UA ) && !/edge/i.test( UA );
 
 		var testElement = document.createElement( 'div' );
@@ -3961,11 +3962,6 @@
 			}
 		}
 
-		if( config.navigationMode === 'linear' ) {
-			routes.right = routes.right || routes.down;
-			routes.left = routes.left || routes.up;
-		}
-
 		// Reverse horizontal controls for rtl
 		if( config.rtl ) {
 			var left = routes.left;
@@ -5451,7 +5447,7 @@
 
 				if( deltaX > touch.threshold && Math.abs( deltaX ) > Math.abs( deltaY ) ) {
 					touch.captured = true;
-					if (config.navigationMode === 'linear') {
+					if( config.navigationMode === 'linear' ) {
 						if( config.rtl ) {
 							navigateNext();
 						}
@@ -5465,7 +5461,7 @@
 				}
 				else if( deltaX < -touch.threshold && Math.abs( deltaX ) > Math.abs( deltaY ) ) {
 					touch.captured = true;
-					if (config.navigationMode === 'linear') {
+					if( config.navigationMode === 'linear' ) {
 						if( config.rtl ) {
 							navigatePrev();
 						}
@@ -5479,7 +5475,7 @@
 				}
 				else if( deltaY > touch.threshold ) {
 					touch.captured = true;
-					if (config.navigationMode === 'linear') {
+					if( config.navigationMode === 'linear' ) {
 						navigatePrev();
 					}
 					else {
@@ -5488,7 +5484,7 @@
 				}
 				else if( deltaY < -touch.threshold ) {
 					touch.captured = true;
-					if (config.navigationMode === 'linear') {
+					if( config.navigationMode === 'linear' ) {
 						navigateNext();
 					}
 					else {

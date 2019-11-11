@@ -1201,6 +1201,7 @@ Each theme is available as a separate stylesheet. To change theme you will need 
 
 If you want to add a theme of your own see the instructions here: [/css/theme/README.md](https://github.com/hakimel/reveal.js/blob/master/css/theme/README.md).
 
+All theme variables are exposed as CSS custom properties in the pseudo-class `:root`. See [the list of exposed variables](https://github.com/hakimel/reveal.js/blob/master/css/theme/template/exposer.scss).
 
 ## Speaker Notes
 
@@ -1272,7 +1273,7 @@ Reveal.initialize({
 
 Then:
 
-1. Install [Node.js](http://nodejs.org/) (4.0.0 or later)
+1. Install [Node.js](http://nodejs.org/) (9.0.0 or later)
 2. Run `npm install`
 3. Run `node plugin/notes-server`
 
@@ -1281,7 +1282,7 @@ Then:
 
 Plugins should register themselves with reveal.js by calling `Reveal.registerPlugin( 'myPluginID', MyPlugin )`. Registered plugin instances can optionally expose an "init" function that reveal.js will call to initialize them.
 
-When reveal.js is booted up via `Reveal.initialize()`, it will go through all registered plugins and invoke their "init" methods. If the "init" method returns a Promise, reveal.js will wait for that promise to be fullfilled before finshing the startup sequence and firing the [ready](#ready-event) event. Here's an example of a plugin that does some asynchronous work before reveal.js can proceed:
+When reveal.js is booted up via `Reveal.initialize()`, it will go through all registered plugins and invoke their "init" methods. If the "init" method returns a Promise, reveal.js will wait for that promise to be fulfilled before finshing the startup sequence and firing the [ready](#ready-event) event. Here's an example of a plugin that does some asynchronous work before reveal.js can proceed:
 
 ```javascript
 let MyPlugin = {
@@ -1292,7 +1293,7 @@ Reveal.addEventListener( 'ready', () => console.log( 'Three seconds later...' ) 
 Reveal.initialize();
 ```
 
-If the init method does _not_ return a Promise, the plugin is considered ready right away and will not hold up the reveal.js startup sequence.
+Note that reveal.js will *not* wait for init Promise fullfillment if the plugin is loaded as an [async dependency](#dependencies). If the plugin's init method does _not_ return a Promise, the plugin is considered ready right away and will not hold up the reveal.js startup sequence.
 
 ### Retrieving Plugins
 
@@ -1455,9 +1456,9 @@ Reveal.initialize({
 
 	math: {
 		mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-		config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+		config: 'TeX-AMS_HTML-full', // See http://docs.mathjax.org/en/latest/config-files.html
 		// pass other options into `MathJax.Hub.Config()`
-		TeX: { Macros: macros }
+		TeX: { Macros: { RR: "{\\bf R}" } }
 	},
 
 	dependencies: [
