@@ -5,6 +5,7 @@
  * This theme is Copyright (C) 2012-2013 Owen Versteeg, http://owenversteeg.com - it is MIT licensed.
  */
 
+@use "sass:color";
 
 // Default mixins and settings -----------------
 @import "../template/mixins";
@@ -22,7 +23,7 @@ $headingTextShadow: none;
 $headingTextTransform: none;
 $backgroundColor: #F0F1EB;
 $linkColor: #51483D;
-$linkColorHover: lighten( $linkColor, 20% );
+$linkColorHover: color.adjust( $linkColor, $lightness: 20% );
 $selectionBackgroundColor: #26351C;
 
 .reveal a {

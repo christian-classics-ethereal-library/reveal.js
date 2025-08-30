@@ -6,6 +6,7 @@
  * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 
+@use "sass:color";
 
 // Default mixins and settings -----------------
 @import "../template/mixins";
@@ -28,7 +29,7 @@ $headingTextShadow: none;
 $headingTextTransform: none;
 $backgroundColor: #fff;
 $linkColor: #00008B;
-$linkColorHover: lighten( $linkColor, 20% );
+$linkColorHover: color.adjust( $linkColor, $lightness: 20% );
 $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
 
 section.has-dark-background {
